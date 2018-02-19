@@ -1,12 +1,23 @@
 <template>
     <div id="search-bar">
-        <input type="text" />
+        <input 
+            ref="input"
+            v-bind:value="searchInput" 
+            @input="handleInput($event.target.value)"
+            type="text" />
     </div>
 </template>
 
 <script>
 export default {
     name: 'SearchBar',
+    props: ['searchInput'],
+    methods: {
+        handleInput(value) {
+            this.$refs.input.value = value;
+            this.$emit('change', value);
+        }
+    }
 }
 </script>
 

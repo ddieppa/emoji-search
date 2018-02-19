@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <SearchBar/>
+    <SearchBar v-on:change="handleSearch" />
     <SearchResults/>
   </div>
 </template>
@@ -17,6 +17,11 @@ export default {
     Header,
     SearchBar,
     SearchResults,
+  },
+  methods: {
+    handleSearch(value) {
+      console.log(value);
+    }
   }
 }
 </script>
