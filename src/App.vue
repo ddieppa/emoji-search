@@ -2,7 +2,7 @@
   <div id="app">
     <Header/>
     <SearchBar v-on:change="handleSearch" />
-    <SearchResults 
+    <SearchResults
       :listOfEmoji="listOfEmoji"
      />
   </div>
@@ -12,23 +12,13 @@
 import Header from './components/Header.vue'
 import SearchBar from './components/SearchBar.vue'
 import SearchResults from './components/SearchResults.vue'
+import emojiList from './../emoji'
 
 export default {
   name: 'app',
   data() {
     return {
-      listOfEmoji: [
-        {
-          title: 'smiley',
-          symbol: '😀',
-          description: 'smiley face'
-        },
-        {
-          title: 'cheeky',
-          symbol: '😛',
-          description: 'Tongue Face'
-        },
-      ]
+      listOfEmoji: emojiList
     }
   },
   components: {
@@ -38,7 +28,18 @@ export default {
   },
   methods: {
     handleSearch(value) {
-      console.log(value);
+      const keyword = value.toLowerCase()
+      this.listOfEmoji = emojiList.filter(emoji => {
+        if (emoji.title.toLowerCase().includes(keyword)) {
+          return true;
+        }
+
+        if (emoji.description.toLowerCase().includes(keyword)) {
+          return true;
+        }
+
+        return false;
+      })
     }
   }
 }
