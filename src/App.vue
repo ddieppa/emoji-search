@@ -12,13 +12,13 @@
 import Header from './components/Header.vue'
 import SearchBar from './components/SearchBar.vue'
 import SearchResults from './components/SearchResults.vue'
-import emojiList from './../emoji'
+import filterEmoji from './util/filter'
 
 export default {
   name: 'app',
   data() {
     return {
-      listOfEmoji: emojiList
+      listOfEmoji: filterEmoji('', 20)
     }
   },
   components: {
@@ -28,18 +28,8 @@ export default {
   },
   methods: {
     handleSearch(value) {
-      const keyword = value.toLowerCase()
-      this.listOfEmoji = emojiList.filter(emoji => {
-        if (emoji.title.toLowerCase().includes(keyword)) {
-          return true;
-        }
-
-        if (emoji.description.toLowerCase().includes(keyword)) {
-          return true;
-        }
-
-        return false;
-      })
+      console.log(value)
+      this.listOfEmoji = filterEmoji(value, 20)
     }
   }
 }

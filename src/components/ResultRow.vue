@@ -1,7 +1,7 @@
 <template>
     <div class="result-item">
         <img 
-            src="../assets/0023.png"
+            :src="src"
             :alt="title"
         />
         <span class="title">{{ title }}</span>
@@ -10,8 +10,18 @@
 
 <script>
 export default {
+    data() {
+        return {
+            src: '../assets/0023.png'
+        }
+    },
+    created() {
+        const codePointHex = this.symbol.codePointAt(0).toString(16);
+        const src = `//cdn.jsdelivr.net/emojione/assets/png/${codePointHex}.png`;
+        this.src = src
+    },
     name: 'ResultRow',
-    props: ['title', 'symbol', 'description'],
+    props: ['title', 'symbol', 'keywords'],
 }
 </script>
 

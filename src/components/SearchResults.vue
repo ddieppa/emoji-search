@@ -5,7 +5,7 @@
             :key="emoji.symbol"
             :title="emoji.title"
             :symbol="emoji.symbol"
-            :description="emoji.description"
+            :keywords="emoji.keywords"
         /> 
     </div>
 </template>
