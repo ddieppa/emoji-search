@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     handleSearch(value) {
-      console.log(value)
       this.listOfEmoji = filterEmoji(value, 20)
     }
   }
